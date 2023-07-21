@@ -1,0 +1,54 @@
+/*style the header*/
+header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    width: 100%;
+}
+
+header a {
+    display: inline;
+    text-align: left;
+    padding-left: 25px;
+    text-decoration: none;
+}
+
+header p {
+    display: flex;
+    margin: 10px;
+    padding-right: 25px;
+}
+
+/*define the sizes for the text*/
+body {
+    font-size: 28px;
+}
+
+h1 {
+    font-size: 180%;
+}
+
+/*style the text in the main section to be in the center */
+main {
+    text-align: center;
+}
+
+/*To provide a space between Time: and the number*/
+span {
+    padding-left: 10px;
+}
+
+/*Styling all of the buttons*/
+button {
+    color: white;
+    background-color: rgb(35, 7, 88);
+    font-size: 100%;
+    border: transparent;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+button:hover {
+    background-color: blueviolet;
+    cursor: pointer;
+}
