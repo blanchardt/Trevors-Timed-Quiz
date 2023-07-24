@@ -12,20 +12,29 @@ var currentQuestion = 0;
 var gotCorrect = 0;
 
 //create an array of the questions and answers.
-var questions = ["Commonly used data types DO Not Include:", "The condition in an if / else statement is enclosed with _______."];
-var answers = ["1. strings", "2. booleans", "3. alerts", "4. numbers", "1. quotes", "2. curly brackets", "3. parenthesis", "4. square brackets"];
-var correctAnswers = [3, 2];
+var questions = ["Commonly used data types DO Not Include:", "The condition in an if / else statement is enclosed with _______.",
+                  "Arrays in JavaScript can be used to store _______.", "String values must be enclosed within _______ when being assigned to variables.",
+                  "A very useful tool used during development and debugging for printing content to the debugger is:"];
+var answers = ["1. strings", "2. booleans", "3. alerts", "4. numbers", "1. quotes", "2. curly brackets", "3. parenthesis", "4. square brackets", 
+                "1. numbers and strings", "2. other arrays", "3. booleans", "4. all of the above", "1. commas", "2. curly brackets", "3. quotes", "4. parenthesis",
+                "1. JavaScript", "2. terminal/bash", "3. for loops", "4. console.log"];
+var correctAnswers = [3, 2, 4, 3, 4];
 
+//create a global variable to count down the timer during the quiz.
+var timerInterval;
 
 function setTime() {
-  // Sets interval in variable
-  var timerInterval = setInterval(function() {
+  //define the timer.
+  timerInterval = setInterval(function() {
     secondsRemaining--;
     countDown.textContent = secondsRemaining;
 
     if(secondsRemaining === 0) {
       // Stops the timer
       clearInterval(timerInterval);
+      
+      //resets the unordered list to be empty.
+      multipleChoiceList.innerHTML = "";
 
       //call a function that ends the quiz and displays the score.
 
@@ -68,23 +77,24 @@ function answerClicked (event) {
   //move on to the next question.
   currentQuestion++;
 
+  //check if the correct answer was chosen.
+  if (element.matches(".correct")) {
+    //increase the correct amount of answers.
+    gotCorrect++;
+  }
+  else if (element.matches(".incorrect")){
+    //penalty for getting the incorrect answer.
+    secondsRemaining -= 10;
+  }
+
   //check if the next question exists.
   if(currentQuestion <= questions.length)
   {
-    // check if user clicked on the correct or incorrect answer.
-    if (element.matches(".correct")) {
-      //increase the correct amount of answers then call a function to move to the next question.
-      gotCorrect++;
-      
       generateQuestionAndAnswer();
-    }
-    else if (element.matches(".incorrect")) {
-      //call function to move to next question.
-      generateQuestionAndAnswer();
-    }
   }
   else {
     //call a function that shows the score and asks for initials.
+    clearInterval(timerInterval);
   }
   console.log(gotCorrect);
 }
