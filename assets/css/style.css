@@ -58,9 +58,16 @@ button:hover {
 /*Style for the unordered list to remove the list bullet.*/
 ul {
     list-style: none;
+    padding-left: 0px;
 }
 
 /*Style for the list items to provide padding between them.*/
 li {
     padding-bottom: 15px;
+}
+
+/*add styling for the buttons specifically for the questions.*/
+.answer {
+    width: 285px;
+    text-align: left;
 }

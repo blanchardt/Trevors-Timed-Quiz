@@ -6,7 +6,11 @@ var mainEl = document.querySelector("main");
 var h1El = document.querySelector("h1");
 var mainParagraph = document.querySelector("#start-and-end");
 
+//create number values to be used later on.
 var secondsRemaining = 0;
+var currentQuestion = 0;
+var correctAnswers = 0;
+
 
 function setTime() {
   // Sets interval in variable
@@ -26,22 +30,28 @@ function setTime() {
 }
 
 function firstQuestion() {
+  currentQuestion++;
+
   //create the buttons in the list elements.
   var firstli = document.createElement("li");
   var firstButton = document.createElement("button");
   firstButton.textContent = "1. strings";
+  firstButton.setAttribute("class", "incorrect answer");
 
   var secondli = document.createElement("li");
   var secondButton = document.createElement("button");
   secondButton.textContent = "2. booleans";
+  secondButton.setAttribute("class", "incorrect answer");
 
   var thirdli = document.createElement("li");
   var thirdButton = document.createElement("button");
   thirdButton.textContent = "3. alerts";
+  thirdButton.setAttribute("class", "correct answer");
 
   var fourthli = document.createElement("li");
   var fourthButton = document.createElement("button");
   fourthButton.textContent = "4. numbers";
+  fourthButton.setAttribute("class", "incorrect answer");
 
   //append the list elements and buttons to the unordered list.
   firstli.appendChild(firstButton);
@@ -61,6 +71,21 @@ function firstQuestion() {
 
   //change the header to the first question.
   h1El.textContent = "Commonly used data types DO Not Include:";
+
+  //create a on click event for the unordered list.
+  multipleChoiceList.addEventListener("click", function (event) {
+    var element = event.target;
+
+    // check if user clicked on the correct or incorrect answer.
+    if (element.matches(".correct")) {
+      //increase the correct amount of answers then call a function to move to the next question.
+      correctAnswers++;
+
+    }
+    else if (element.matches(".incorrect")) {
+      //call function to move to next question.
+    }
+  });
 }
 
 function startQuiz() {
