@@ -9,7 +9,12 @@ var mainParagraph = document.querySelector("#start-and-end");
 //create number values to be used later on.
 var secondsRemaining = 0;
 var currentQuestion = 0;
-var correctAnswers = 0;
+var gotCorrect = 0;
+
+//create an array of the questions and answers.
+var questions = ["Commonly used data types DO Not Include:", "The condition in an if / else statement is enclosed with _______."];
+var answers = ["1. strings", "2. booleans", "3. alerts", "4. numbers", "1. quotes", "2.curly brackets", "3. parenthesis", "4. square brackets"];
+var correctAnswers = [3, 2];
 
 
 function setTime() {
@@ -29,48 +34,39 @@ function setTime() {
   }, 1000);
 }
 
+function generateQuestionAndAnswer() {
+  //change the header to the first question.
+  h1El.textContent = questions[currentQuestion - 1];
+
+  for (var i = (currentQuestion - 1) * 4; i < currentQuestion * 4; i++) {
+    //create the buttons in the list elements.
+    var liEl = document.createElement("li");
+    var buttonEl = document.createElement("button");
+    buttonEl.textContent = answers[i];
+
+    //check if the current answer being created is the correct answer or not.
+    //I have used module (%) prior to this class.
+    if((i % 4) + 1 === correctAnswers[currentQuestion - 1]) {
+      buttonEl.setAttribute("class", "correct answer");
+    }
+    else {
+      buttonEl.setAttribute("class", "incorrect answer");
+    }
+
+    //append the list elements and buttons to the unordered list.
+    liEl.appendChild(buttonEl);
+    multipleChoiceList.appendChild(liEl);
+  }
+}
+
 function firstQuestion() {
-  currentQuestion++;
+  currentQuestion = 1;
 
-  //create the buttons in the list elements.
-  var firstli = document.createElement("li");
-  var firstButton = document.createElement("button");
-  firstButton.textContent = "1. strings";
-  firstButton.setAttribute("class", "incorrect answer");
-
-  var secondli = document.createElement("li");
-  var secondButton = document.createElement("button");
-  secondButton.textContent = "2. booleans";
-  secondButton.setAttribute("class", "incorrect answer");
-
-  var thirdli = document.createElement("li");
-  var thirdButton = document.createElement("button");
-  thirdButton.textContent = "3. alerts";
-  thirdButton.setAttribute("class", "correct answer");
-
-  var fourthli = document.createElement("li");
-  var fourthButton = document.createElement("button");
-  fourthButton.textContent = "4. numbers";
-  fourthButton.setAttribute("class", "incorrect answer");
-
-  //append the list elements and buttons to the unordered list.
-  firstli.appendChild(firstButton);
-  multipleChoiceList.appendChild(firstli);
-
-  secondli.appendChild(secondButton);
-  multipleChoiceList.appendChild(secondli);
-
-  thirdli.appendChild(thirdButton);
-  multipleChoiceList.appendChild(thirdli);
-
-  fourthli.appendChild(fourthButton);
-  multipleChoiceList.appendChild(fourthli);
+  //call function that sets up the question and answers.
+  generateQuestionAndAnswer();
 
   //arange the text to left instead of center.
   mainEl.setAttribute("style", "text-align: left");
-
-  //change the header to the first question.
-  h1El.textContent = "Commonly used data types DO Not Include:";
 
   //create a on click event for the unordered list.
   multipleChoiceList.addEventListener("click", function (event) {
@@ -79,7 +75,7 @@ function firstQuestion() {
     // check if user clicked on the correct or incorrect answer.
     if (element.matches(".correct")) {
       //increase the correct amount of answers then call a function to move to the next question.
-      correctAnswers++;
+      gotCorrect++;
 
     }
     else if (element.matches(".incorrect")) {
