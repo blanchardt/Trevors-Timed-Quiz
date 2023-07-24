@@ -30,7 +30,9 @@ h1 {
 
 /*style the text in the main section to be in the center */
 main {
+    padding-left: 25%;
     text-align: center;
+    width: 50%;
 }
 
 /*To provide a space between Time: and the number*/
@@ -51,4 +53,14 @@ button {
 button:hover {
     background-color: blueviolet;
     cursor: pointer;
+}
+
+/*Style for the unordered list to remove the list bullet.*/
+ul {
+    list-style: none;
+}
+
+/*Style for the list items to provide padding between them.*/
+li {
+    padding-bottom: 15px;
 }
