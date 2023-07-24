@@ -13,7 +13,7 @@ var gotCorrect = 0;
 
 //create an array of the questions and answers.
 var questions = ["Commonly used data types DO Not Include:", "The condition in an if / else statement is enclosed with _______."];
-var answers = ["1. strings", "2. booleans", "3. alerts", "4. numbers", "1. quotes", "2.curly brackets", "3. parenthesis", "4. square brackets"];
+var answers = ["1. strings", "2. booleans", "3. alerts", "4. numbers", "1. quotes", "2. curly brackets", "3. parenthesis", "4. square brackets"];
 var correctAnswers = [3, 2];
 
 
@@ -35,7 +35,7 @@ function setTime() {
 }
 
 function generateQuestionAndAnswer() {
-  //change the header to the first question.
+  //change the header to the first/next question.
   h1El.textContent = questions[currentQuestion - 1];
 
   for (var i = (currentQuestion - 1) * 4; i < currentQuestion * 4; i++) {
@@ -53,10 +53,40 @@ function generateQuestionAndAnswer() {
       buttonEl.setAttribute("class", "incorrect answer");
     }
 
-    //append the list elements and buttons to the unordered list.
+    //append the list element and button to the unordered list.
     liEl.appendChild(buttonEl);
     multipleChoiceList.appendChild(liEl);
   }
+}
+
+function answerClicked (event) {
+  var element = event.target;
+
+  //reset the list to be empty.
+  multipleChoiceList.innerHTML = "";
+
+  //move on to the next question.
+  currentQuestion++;
+
+  //check if the next question exists.
+  if(currentQuestion <= questions.length)
+  {
+    // check if user clicked on the correct or incorrect answer.
+    if (element.matches(".correct")) {
+      //increase the correct amount of answers then call a function to move to the next question.
+      gotCorrect++;
+      
+      generateQuestionAndAnswer();
+    }
+    else if (element.matches(".incorrect")) {
+      //call function to move to next question.
+      generateQuestionAndAnswer();
+    }
+  }
+  else {
+    //call a function that shows the score and asks for initials.
+  }
+  console.log(gotCorrect);
 }
 
 function firstQuestion() {
@@ -69,19 +99,7 @@ function firstQuestion() {
   mainEl.setAttribute("style", "text-align: left");
 
   //create a on click event for the unordered list.
-  multipleChoiceList.addEventListener("click", function (event) {
-    var element = event.target;
-
-    // check if user clicked on the correct or incorrect answer.
-    if (element.matches(".correct")) {
-      //increase the correct amount of answers then call a function to move to the next question.
-      gotCorrect++;
-
-    }
-    else if (element.matches(".incorrect")) {
-      //call function to move to next question.
-    }
-  });
+  multipleChoiceList.addEventListener("click", answerClicked);
 }
 
 function startQuiz() {
