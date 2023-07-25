@@ -72,6 +72,23 @@ li {
     text-align: left;
 }
 
+/*Add styling for the form fields*/
+form {
+    display: none;
+}
+
+#submit {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+input {   
+    height: 30px;
+    width: 50%;
+    font-size: 20px;
+}
+
+/*styling for the result of the previous answer*/
 #result {
     font-size: 170%;
     color:Grey;

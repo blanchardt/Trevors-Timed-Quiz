@@ -7,6 +7,7 @@ var h1El = document.querySelector("h1");
 var mainParagraph = document.querySelector("#start-and-end");
 var hrEl = document.querySelector("hr");
 var resultParagraph = document.querySelector("#result");
+var formEl = document.querySelector("#submit-time-form");
 
 //create number values to be used later on.
 var secondsRemaining = 0;
@@ -38,11 +39,24 @@ function setTime() {
       //resets the unordered list to be empty.
       multipleChoiceList.innerHTML = "";
 
-      //call a function that ends the quiz and displays the score.
+      //display a message saying out of time.
+      hrEl.setAttribute("style", "display: block");
+      resultParagraph.textContent = "Ran out of time!";
 
+      //call a function that ends the quiz and displays the score.
+      quizFinish();
     }
 
   }, 1000);
+}
+
+function quizFinish () {
+  //adjust the header and paragraphs acordingly.
+  h1El.textContent = "All done!";
+  mainParagraph.textContent = "Your final score is " + secondsRemaining + ".";
+
+  //reveal the form field for user to submit their score.
+  formEl.setAttribute("style", "display: block");
 }
 
 function generateQuestionAndAnswer() {
@@ -103,8 +117,10 @@ function answerClicked (event) {
       generateQuestionAndAnswer();
   }
   else {
-    //call a function that shows the score and asks for initials.
+    //call a function that shows the score and asks for initials and pause the timer.
     clearInterval(timerInterval);
+
+    quizFinish();
   }
   console.log(gotCorrect);
 }
