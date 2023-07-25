@@ -71,3 +71,9 @@ li {
     width: 285px;
     text-align: left;
 }
+
+#result {
+    font-size: 170%;
+    color:Grey;
+    margin: 0px;
+}

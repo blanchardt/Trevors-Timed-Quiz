@@ -5,6 +5,8 @@ var multipleChoiceList = document.querySelector("#options");
 var mainEl = document.querySelector("main");
 var h1El = document.querySelector("h1");
 var mainParagraph = document.querySelector("#start-and-end");
+var hrEl = document.querySelector("hr");
+var resultParagraph = document.querySelector("#result");
 
 //create number values to be used later on.
 var secondsRemaining = 0;
@@ -77,14 +79,22 @@ function answerClicked (event) {
   //move on to the next question.
   currentQuestion++;
 
+  hrEl.setAttribute("style", "display: block");
+
   //check if the correct answer was chosen.
   if (element.matches(".correct")) {
     //increase the correct amount of answers.
     gotCorrect++;
+    
+    //let the user know they were correct.
+    resultParagraph.textContent = "Correct!";
   }
   else if (element.matches(".incorrect")){
     //penalty for getting the incorrect answer.
     secondsRemaining -= 10;
+    
+    //let the user know they were incorrect.
+    resultParagraph.textContent = "Wrong!";
   }
 
   //check if the next question exists.
@@ -115,6 +125,7 @@ function firstQuestion() {
 function startQuiz() {
     //start the timer.
     secondsRemaining = 75;
+    countDown.textContent = secondsRemaining;
     setTime();
 
     //hide the start quiz button and paragraph.
@@ -125,5 +136,7 @@ function startQuiz() {
     firstQuestion();
 
 }
+
+hrEl.setAttribute("style", "display: none");
 
 startButton.addEventListener("click", startQuiz);
