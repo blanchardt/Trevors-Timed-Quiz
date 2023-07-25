@@ -88,43 +88,45 @@ function generateQuestionAndAnswer() {
 
 function answerClicked (event) {
   var element = event.target;
+  //check if the user clicked a button or not.
+  if (element.matches("button")) {
+    //reset the list to be empty.
+    multipleChoiceList.innerHTML = "";
 
-  //reset the list to be empty.
-  multipleChoiceList.innerHTML = "";
+    //move on to the next question.
+    currentQuestion++;
 
-  //move on to the next question.
-  currentQuestion++;
+    hrEl.setAttribute("style", "display: block");
 
-  hrEl.setAttribute("style", "display: block");
+    //check if the correct answer was chosen.
+    if (element.matches(".correct")) {
+      //increase the correct amount of answers.
+      gotCorrect++;
+      
+      //let the user know they were correct.
+      resultParagraph.textContent = "Correct!";
+    }
+    else if (element.matches(".incorrect")){
+      //penalty for getting the incorrect answer.
+      secondsRemaining -= 10;
+      
+      //let the user know they were incorrect.
+      resultParagraph.textContent = "Wrong!";
+    }
 
-  //check if the correct answer was chosen.
-  if (element.matches(".correct")) {
-    //increase the correct amount of answers.
-    gotCorrect++;
-    
-    //let the user know they were correct.
-    resultParagraph.textContent = "Correct!";
+    //check if the next question exists.
+    if(currentQuestion <= questions.length)
+    {
+        generateQuestionAndAnswer();
+    }
+    else {
+      //call a function that shows the score and asks for initials and pause the timer.
+      clearInterval(timerInterval);
+
+      quizFinish();
+    }
+    console.log(gotCorrect);
   }
-  else if (element.matches(".incorrect")){
-    //penalty for getting the incorrect answer.
-    secondsRemaining -= 10;
-    
-    //let the user know they were incorrect.
-    resultParagraph.textContent = "Wrong!";
-  }
-
-  //check if the next question exists.
-  if(currentQuestion <= questions.length)
-  {
-      generateQuestionAndAnswer();
-  }
-  else {
-    //call a function that shows the score and asks for initials and pause the timer.
-    clearInterval(timerInterval);
-
-    quizFinish();
-  }
-  console.log(gotCorrect);
 }
 
 function firstQuestion() {
