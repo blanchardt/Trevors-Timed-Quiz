@@ -31,8 +31,8 @@ Modified by: Trevor Blanchard
 
 script.js line 199, highscores-script.js line 37:  
 Went to https://stackoverflow.com/questions/13071967/adding-an-onclick-function-to-go-to-url-in-javascript to find info on how to make 
-an on click event open up a new url page that allows the user to hit the back button as well.  Also credited in the README file.
-John Taylor, Rick Donohoe, Aamir Shahzad, azzy81, T.W.R. Cole, Moji, Jack J, Darvydas Šilkus, Nigel, Kamil Kiełczewski, Kamil 
-    Kiełczewski, &amp; aziz_alqudsy. (2012, October 25). Adding an onclick function to go to URL in 
-    JavaScript?. Stack Overflow. https://stackoverflow.com/questions/13071967/adding-an-onclick-function-to-go-to-
+an on click event open up a new url page that allows the user to hit the back button as well.  Also credited in the README file.  
+John Taylor, Rick Donohoe, Aamir Shahzad, azzy81, T.W.R. Cole, Moji, Jack J, Darvydas Šilkus, Nigel, Kamil Kiełczewski, Kamil   
+    Kiełczewski, &amp; aziz_alqudsy. (2012, October 25). Adding an onclick function to go to URL in   
+    JavaScript?. Stack Overflow. https://stackoverflow.com/questions/13071967/adding-an-onclick-function-to-go-to-  
     url-in-javascript  
