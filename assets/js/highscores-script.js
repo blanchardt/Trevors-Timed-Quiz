@@ -25,3 +25,9 @@ for (var i = 0; i < results.length; i++) {
   
   ulEl.appendChild(li);
 }
+
+backBtn.addEventListener("click", function() {
+  //Went to https://stackoverflow.com/questions/13071967/adding-an-onclick-function-to-go-to-url-in-javascript to find info on how to make 
+  //an on click event open up a new url page that allows the user to hit the back button as well.  Also credited in the README file.
+  window.location = "./index.html";
+});
