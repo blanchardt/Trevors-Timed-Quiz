@@ -9,6 +9,7 @@ var hrEl = document.querySelector("hr");
 var resultParagraph = document.querySelector("#result");
 var formEl = document.querySelector("#submit-time-form");
 var submitBtn = document.querySelector("#submit");
+var inputEl = document.querySelector("#initials-text");
 
 //create number values to be used later on.
 var secondsRemaining = 0;
@@ -154,6 +155,37 @@ function startQuiz() {
 
 }
 
+function addScore(event) {
+  //prevent the default of removing the text in the input field.
+  event.preventDefault();
+
+  //get the text inside the input field.
+  var initialsText = inputEl.value.trim();
+  //check if empty.  if empty then don't submit and end this function.
+  if (initialsText === "") {
+    return;
+  }
+
+  //get the array of the previous results.
+  var results = []
+  var storedScores = JSON.parse(localStorage.getItem("scores"));
+  if (storedScores !== null) {
+    results = storedScores;
+  }
+
+  //create a new variable that stores the newest results.
+  var newResult = {
+    initials: initialsText,
+    score: secondsRemaining
+  };
+
+  //add the newest result to the array and the local storage
+  results.push(newResult);
+
+  localStorage.setItem("scores", JSON.stringify(results));
+}
+
 //on load assign click events to the start button and the submit button.
 startButton.addEventListener("click", startQuiz);
 
+submitBtn.addEventListener("click", addScore);
