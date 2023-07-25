@@ -99,3 +99,12 @@ input {
     color:Grey;
     margin: 0px;
 }
+
+/*styling for the unordered list on the highscores.html file.*/
+#high-scores li {
+    padding: 5px;
+}
+
+#high-scores li:nth-child(odd) {
+    background-color: #e3cefc;
+  }
