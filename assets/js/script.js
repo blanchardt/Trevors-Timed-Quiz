@@ -188,7 +188,7 @@ function addScore(event) {
 
   //Went to https://stackoverflow.com/questions/13071967/adding-an-onclick-function-to-go-to-url-in-javascript to find info on how to make 
   //an on click event open up a new url page that allows the user to hit the back button as well.  Also credited in the README file.
-  window.location = "https://www.w3schools.com";
+  window.location = "./highscores.html";
 }
 
 //on load assign click events to the start button and the submit button.
