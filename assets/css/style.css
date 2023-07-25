@@ -72,6 +72,11 @@ li {
     text-align: left;
 }
 
+/*hide the dividing line, have javascript reveal it*/
+hr {
+    display: none;
+}
+
 /*Add styling for the form fields*/
 form {
     display: none;

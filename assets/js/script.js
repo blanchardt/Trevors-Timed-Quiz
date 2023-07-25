@@ -1,4 +1,4 @@
-// Selects element by class
+// create variables getting commonly used elements.
 var countDown = document.querySelector("#time-remaining");
 var startButton = document.querySelector("#start");
 var multipleChoiceList = document.querySelector("#options");
@@ -8,6 +8,7 @@ var mainParagraph = document.querySelector("#start-and-end");
 var hrEl = document.querySelector("hr");
 var resultParagraph = document.querySelector("#result");
 var formEl = document.querySelector("#submit-time-form");
+var submitBtn = document.querySelector("#submit");
 
 //create number values to be used later on.
 var secondsRemaining = 0;
@@ -153,6 +154,6 @@ function startQuiz() {
 
 }
 
-hrEl.setAttribute("style", "display: none");
-
+//on load assign click events to the start button and the submit button.
 startButton.addEventListener("click", startQuiz);
+
