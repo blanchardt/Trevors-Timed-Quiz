@@ -57,8 +57,9 @@ function quizFinish () {
   h1El.textContent = "All done!";
   mainParagraph.textContent = "Your final score is " + secondsRemaining + ".";
 
-  //reveal the form field for user to submit their score.
+  //reveal the form field for user to submit their score, along with the main paragraph again.
   formEl.setAttribute("style", "display: block");
+  mainParagraph.setAttribute("style", "display: block");
 }
 
 function generateQuestionAndAnswer() {
@@ -112,6 +113,9 @@ function answerClicked (event) {
       
       //let the user know they were incorrect.
       resultParagraph.textContent = "Wrong!";
+
+      //adjust the timer on the screen.
+      countDown.textContent = secondsRemaining;
     }
 
     //check if the next question exists.
