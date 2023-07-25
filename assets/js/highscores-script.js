@@ -1,6 +1,8 @@
 // create variables getting commonly used elements.
 var mainEl = document.querySelector("main");
 var ulEl = document.querySelector("#high-scores");
+var backBtn = document.querySelector("#go-back");
+var clearBtn = document.querySelector("#clear");
 
 //create some global variables.
 var results = [];
