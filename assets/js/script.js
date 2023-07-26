@@ -14,7 +14,6 @@ var inputEl = document.querySelector("#initials-text");
 //create number values to be used later on.
 var secondsRemaining = 0;
 var currentQuestion = 0;
-var gotCorrect = 0;
 
 //create an array of the questions and answers.
 var questions = ["Commonly used data types DO Not Include:", "The condition in an if / else statement is enclosed with _______.",
@@ -101,9 +100,6 @@ function answerClicked (event) {
 
     //check if the correct answer was chosen.
     if (element.matches(".correct")) {
-      //increase the correct amount of answers.
-      gotCorrect++;
-      
       //let the user know they were correct.
       resultParagraph.textContent = "Correct!";
     }
@@ -129,7 +125,6 @@ function answerClicked (event) {
 
       quizFinish();
     }
-    console.log(gotCorrect);
   }
 }
 
